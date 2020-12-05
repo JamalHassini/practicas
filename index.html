@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+
+    <link rel="stylesheet" type="text/css" href="jquerymobile/jquery.mobile-1.4.5.min.css">
+    <script type="text/javascript" src="js/jquery-1.12.2.min.js"></script>
+    <script type="text/javascript" src="jquerymobile/jquery.mobile-1.4.5.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <title>App Rutas</title>
+</head>
+<body>
+<div data-role="page" id="pagina_notas">
+        <div data-role="header">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_notas" class="ui-btn-active ui-state-persist">Notas</a></li>
+                <li><a href="#pagina_fotos">Fotos</a></li>
+                <li><a href="#pagina_lugares">Lugares</a></li>
+                <li><a href="#pagina_rutas">Rutas</a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="listado_notas"></ul>
+
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+
+                <li><a href="#pagina_nueva_nota">Añadir nota</a> </li>
+
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<div data-role="page" id="pagina_nueva_nota">
+    <div data-role="header">
+        <h1>Añadir nueva nota</h1>
+
+    </div>
+
+    <div data-role="content">
+        <form id="formulario_nota">
+            <label for="nota" >Introduce tu experiencia<small id="contador_nota">(<span id="numero_nota">0</span> de 140)</small> </label>
+            <textarea name="nota" id="nota" maxlength="140"></textarea>
+            <input type="submit" value="Guardar" id="boton_enviar_nota">
+
+        </form>
+
+
+    </div>
+
+</div>
+<div data-role="page" id="pagina_fotos">
+    <div data-role="header">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_notas">Notas</a> </li>
+                <li><a href="#pagina_fotos" class="ui-btn-active ui-state-persist">Fotos</a> </li>
+                <li><a href="#pagina_lugares">Lugares</a></li>
+                <li><a href="#pagina_rutas">Rutas</a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="listado_fotos">
+
+        </ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <button id="boton_hacer_foto" data-inline="false">Hacer foto</button>
+    </div>
+</div>
+
+<div data-role="page" id="pagina_lugares">
+    <div data-role="header">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_notas">Notas</a></li>
+                <li><a href="#pagina_fotos">Fotos</a> </li>
+                <li><a href="#pagina_lugares" class="ui-btn-active ui-state-persist">Lugares</a> </li>
+                <li><a href="#pagina_rutas">Rutas</a></li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="listado_lugares"></ul>
+    </div>
+</div>
+<div data-role="page" id="pagina_rutas">
+    <div data-role="header">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_notas">Notas</a></li>
+                <li><a href="#pagina_fotos">Fotos</a> </li>
+                <li><a href="#pagina_lugares">Lugares</a></li>
+                <li><a href="#pagina_rutas" class="ui-btn-active ui-state-persist">Rutas</a> </li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="listado_rutas"></ul>
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_nueva_ruta">Añadir nueva ruta</a></li>
+            </ul>
+        </div>
+    </div>
+
+</div>
+
+<div data-role="page" id="pagina_nueva_ruta">
+    <div data-role="header" >
+        <h1>Añadir nueva ruta</h1>
+    </div>
+    <div data-role="content">
+        <form id="formulario_ruta">
+            <label for="ruta">Introduce el nombre de la ruta</label>
+            <input type="text" name="ruta" value="" id="ruta" />
+            <input type="submit" value="Guardar" id="boton_enviar_ruta" />
+        </form>
+        <button type="button" name="button"  id="boton_finalizar" class="hide"></button>
+    </div><br>
+
+
+        <div id="mapa"></div>
+
+</div>
+
+<div data-role="page" id="pagina_ver_ruta">
+    <div data-role="header" >
+        <h1>Ruta</h1>
+    </div>
+    <div data-role="content">
+        <ul data-role="listview" id="listado_ruta">
+
+
+        </ul><br>
+        <div data-role="content" id="map"></div>
+
+
+
+    </div>
+    <div data-role="footer" data-position="fixed">
+        <div data-role="navbar">
+            <ul>
+                <li><a href="#pagina_rutas">Volver</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="cordova.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAxepjC-h_y9W3gYAggn74Zuvm7ty2dkGc"></script>
+
+</body>
+</html>
